@@ -3,20 +3,38 @@
     <MenuButton :close="appState.menu.isOpen" :back="false" @action="appState.menu.reOpenPage()" :title="$t('menu.tooltip')" />
     <div class="space thin-hide"></div>
     <SvgButton v-if="appState.maps.length > 0" class="thin-hide" :title="$t('maps.tooltip')"
-               @action="appState.menu.openPage('maps', $t('maps.title'))">
+               @action="appState.menu.openPage('maps', $t('maps.title'))"
+               v-bind:class="{ 'connect-right': markers.markerSets.length > 0 || markers.markers.length > 0 || !playerMarkerSet.fake }">
       <svg viewBox="0 0 30 30">
-        <polygon points="26.708,22.841 19.049,25.186 11.311,20.718 3.292,22.841 7.725,5.96 13.475,4.814 19.314,7.409 25.018,6.037 "/>
+        <path d="m5.05027,4.519c-0.23974,-0.00272 -0.40865,0.17435 -0.40865,0.47675l0,16.45208c0,0.40048 0.29695,0.86633 
+      0.66746,1.04068l4.50873,2.14131c0.37051,0.17435 0.66746,-0.00544 0.66746,-0.40865l0,-16.45208c0,-0.40048 -0.29695,-0.86633 
+      -0.66746,-1.04341l-4.50873,-2.13858c-0.09263,-0.04359 -0.1798,-0.06538 -0.25881,-0.06811l0,0.00001zm2.51453,10.33056c1.12241,0 
+      2.03233,0.8854 2.03233,1.97785c0,1.09517 -1.88522,4.52507 -2.03233,4.38069c-0.14439,0.14167 -2.02961,-3.28552 
+      -2.02961,-4.38069c0,-1.09245 0.90719,-1.97785 2.02961,-1.97785zm12.84782,-10.30332l4.50601,2.14131c0.37051,0.17435 
+      0.67018,0.64021 0.67018,1.04068l0,16.45208c0,0.4032 -0.29967,0.58572 -0.67018,0.40865l-4.50601,-2.13858c-0.37051,-0.17708 
+      -0.67018,-0.64293 -0.67018,-1.04341l0,-16.45209c0,-0.4032 0.29967,-0.583 0.67018,-0.40864zm-2.36742,-0.04632c-0.08173,-0.00273 
+      -0.17163,0.01362 -0.26698,0.05448l-5.32602,2.2067c-0.37868,0.15528 -0.68381,0.60752 -0.68381,1.00799l0,16.45208c0,0.4032 
+      0.30512,0.59935 0.68381,0.44134l5.32602,-2.2067c0.37868,-0.15801 0.68381,-0.60752 0.68381,-1.00799l0,-16.45208c0,-0.3024 
+      -0.17164,-0.48765 -0.41683,-0.49583zm-2.8796,3.13023c1.12242,0 2.03234,0.8854 2.03234,1.98056c0,1.09245 -1.88522,4.52236 
+      -2.03234,4.37796c-0.14439,0.14166 -2.02961,-3.28552 -2.02961,-4.37796c0,-1.09517 0.90992,-1.98056 2.02961,-1.98056zm0,0"/>
+        <path d="m8.42568,16.82742c0,0.46586 -0.38413,0.84181 -0.86088,0.84181c-0.47675,0 -0.86089,-0.37595 
+        -0.86089,-0.84181c0,-0.46313 0.38413,-0.83909 0.86089,-0.83909c0.47675,0 0.86088,0.37595 
+        0.86088,0.83909zm7.60354,-7.21669c0,0.46314 -0.38686,0.83909 -0.86361,0.83909c-0.47402,0 
+        -0.86088,-0.37595 -0.86088,-0.83909c0,-0.46313 0.38686,-0.83909 0.86088,-0.83909c0.47675,0 0.86089,0.37595 
+        0.86089,0.83909l0.00273,0l-0.00001,0zm0,0"/>
       </svg>
     </SvgButton>
     <SvgButton v-if="markers.markerSets.length > 0 || markers.markers.length > 0" class="thin-hide" :title="$t('markers.tooltip')"
-               @action="appState.menu.openPage('markers', $t('markers.title'), {markerSet: markers})">
+               @action="appState.menu.openPage('markers', $t('markers.title'), {markerSet: markers})"
+               v-bind:class="{ 'connect-left': appState.maps.length > 0, 'connect-right': !playerMarkerSet.fake }">
       <svg viewBox="0 0 30 30">
         <path d="M15,3.563c-4.459,0-8.073,3.615-8.073,8.073c0,6.483,8.196,14.802,8.196,14.802s7.951-8.013,7.951-14.802
 			C23.073,7.177,19.459,3.563,15,3.563z M15,15.734c-2.263,0-4.098-1.835-4.098-4.099c0-2.263,1.835-4.098,4.098-4.098
 			c2.263,0,4.098,1.835,4.098,4.098C19.098,13.899,17.263,15.734,15,15.734z"/>
       </svg>
     </SvgButton>
-    <SvgButton v-if="!playerMarkerSet.fake" class="thin-hide" :title="$t('players.tooltip')" @action="openPlayerList">
+    <SvgButton v-if="!playerMarkerSet.fake" class="thin-hide" :title="$t('players.tooltip')" @action="openPlayerList"
+               v-bind:class="{ 'connect-left': markers.markerSets.length > 0 || markers.markers.length > 0 || appState.maps.length > 0 }">
       <svg viewBox="0 0 30 30">
         <g>
           <path d="M8.95,14.477c0.409-0.77,1.298-1.307,2.164-1.309h0.026c-0.053-0.234-0.087-0.488-0.087-0.755
@@ -47,7 +65,7 @@
     <div class="space thin-hide"></div>
     <ControlsSwitch class="thin-hide"></ControlsSwitch>
     <div class="space thin-hide"></div>
-    <SvgButton class="thin-hide" :title="$t('resetCamera.tooltip')" @action="$bluemap.resetCamera()">
+    <SvgButton class="thin-hide connect-right" :title="$t('resetCamera.tooltip')" @action="$bluemap.resetCamera()">
       <svg viewBox="0 0 30 30">
         <rect x="7.085" y="4.341" transform="matrix(0.9774 0.2116 -0.2116 0.9774 3.2046 -1.394)" width="2.063" height="19.875"/>
         <path d="M12.528,5.088c0,0,3.416-0.382,4.479-0.031c1.005,0.332,2.375,2.219,3.382,2.545c1.096,0.354,4.607-0.089,4.607-0.089
@@ -56,7 +74,7 @@
       </svg>
     </SvgButton>
     <PositionInput class="pos-input" />
-    <Compass :title="$t('compass.tooltip')" />
+    <Compass :title="$t('compass.tooltip')" class="connect-left"/>
   </div>
 </template>
 

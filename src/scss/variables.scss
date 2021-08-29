@@ -34,10 +34,10 @@ $mobile-break: 575.98px;
   font-size: 16px;
   font-weight: 400;
 
-  --theme-bg: #181818;
+  --theme-bg: #222;
   --theme-bg-light: #333;
-  --theme-fg: #fff;
-  --theme-fg-light: #aaa;
+  --theme-fg: #ccc;
+  --theme-fg-light: #bbb;
 
   //SwitchButton
   --theme-switch-button-on: #006EDE;
@@ -54,10 +54,10 @@ $mobile-break: 575.98px;
   font-size: 16px;
   font-weight: 500;
 
-  --theme-bg: #eee;
-  --theme-bg-light: #aaa;
-  --theme-fg: #000;
-  --theme-fg-light: #444;
+  --theme-bg: #ccc;
+  --theme-bg-light: #bbb;
+  --theme-fg: #222;
+  --theme-fg-light: #333;
 
   //SwitchButton
   --theme-switch-button-on: #006EDE;

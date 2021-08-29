@@ -26,6 +26,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import {BlueMapApp} from "@/js/BlueMapApp";
+import {hideSplash, showSplash, showSplashError} from"@/js/LoadingSplasher";
 import i18n from './i18n';
 
 // utils
@@ -53,5 +54,9 @@ i18n.loadLanguageSettings().catch(error => console.error(error));
 
 // load bluemap next tick (to let the assets load first)
 vue.$nextTick(() => {
-  bluemap.load().catch(error => console.error(error));
+  bluemap.load().then(hideSplash).catch(error => {
+    console.error(error);
+    showSplashError(error.message, true);
+    showSplash();
+  });
 });

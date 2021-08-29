@@ -1,0 +1,57 @@
+.control-bar {
+    min-height: 3em;
+}
+
+.svg-button {
+    border-radius: .5em;
+    transition: color .2s ease-in,background-color .2s ease-in;
+    min-width: 3em;
+    min-height: 3em;
+}
+
+.svg-button svg {
+    height: 2.7em;
+}
+
+.svg-button.connect-left {
+    border-radius: 0 .5em .5em 0;
+}
+
+.svg-button.connect-right {
+    border-radius: .5em 0 0 .5em;
+}
+
+.svg-button svg, .svg-button svg path, .svg-button svg circle {
+    transition: fill .2s ease-in;
+}
+
+.svg-button:hover, .svg-button.active {
+    color: var(--theme-bg-light);
+    background-color: var(--theme-fg-light);
+}
+
+.svg-button:hover svg, .svg-button.active svg, .day-night-switch:hover svg circle, .day-night-switch.active svg circle {
+    fill: var(--theme-bg-light);
+}
+
+.compass:hover svg .north, .compass.active svg .north {
+    fill: var(--theme-bg);
+}
+
+.compass:hover svg .south, .compass.active svg .south {
+    fill: var(--theme-bg-light);
+}
+
+.number-input {
+    font-family: monospace;
+    font-size: 1.5em;
+}
+
+.space {
+    width: 0.6em;
+}
+
+.side-menu > .title {
+    line-height: 1.2em;
+    font-size: 1.8em;
+}

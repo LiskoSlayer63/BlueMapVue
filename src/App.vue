@@ -28,6 +28,8 @@ export default {
 
 <style lang="scss">
   @import "~@/scss/global.scss";
+  @import "~@/scss/liveatlas.scss";
+  @import "~@/scss/splasher.scss";
 
   #map-container {
     position: absolute;
