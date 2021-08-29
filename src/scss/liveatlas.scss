@@ -30,16 +30,14 @@
     background-color: var(--theme-fg-light);
 }
 
-.svg-button:hover svg, .svg-button.active svg, .day-night-switch:hover svg circle, .day-night-switch.active svg circle {
+.svg-button:hover svg, .svg-button.active svg, 
+.day-night-switch:hover svg circle, .day-night-switch.active svg circle,
+.compass:hover svg .south, .compass.active svg .south {
     fill: var(--theme-bg-light);
 }
 
 .compass:hover svg .north, .compass.active svg .north {
     fill: var(--theme-bg);
-}
-
-.compass:hover svg .south, .compass.active svg .south {
-    fill: var(--theme-bg-light);
 }
 
 .number-input {
@@ -52,6 +50,16 @@
 }
 
 .side-menu > .title {
-    line-height: 1.2em;
-    font-size: 1.8em;
+    line-height: 1.8em;
+    font-size: 1.4em;
+}
+
+@media (max-width: $mobile-break) {
+    .svg-button, .svg-button.connect-right, .svg-button.connect-left {
+        border-radius: 0;
+    }
+    .side-menu > .title {
+        line-height: 2em;
+        font-size: 1.5em;
+    }
 }
